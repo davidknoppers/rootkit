@@ -4,10 +4,13 @@ This project is an open source repository for an automated plant care system.
 
 Contributors:
 
-Danton Rodriguez
-David Knoppers
-Richard Sim
-Timothy Britton
+Danton Rodriguez, @p0516357
+
+David Knoppers, @davidknoppers
+
+Richard Sim, @rdsim8589
+
+Timothy Britton, @wintermanc3r
 
 ### Why would I want this?
 
