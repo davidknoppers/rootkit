@@ -1,8 +1,8 @@
 ## Plants as a Service
-This project is an open source repository for an automated plant care system.
+This is an open source project for an automated plant care system.
 
 
-Contributors:
+**Contributors:**
 
 Danton Rodriguez, @p0516357
 
