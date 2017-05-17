@@ -3,7 +3,7 @@ USE plants_db;
 CREATE TABLE IF NOT EXISTS sensor_readings(
 plant_id INT,
 date_time TIMESTAMP,
-_date DATE,
+_daTe DATE,
 _time TIME,
 reading_type VARCHAR(50),
 reading_value INT,
