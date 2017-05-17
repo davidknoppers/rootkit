@@ -13,6 +13,7 @@ sudo apt-get install mysql=5.7 -y -q
 sudo apt-get install python3-dev -y -q
 sudo apt-get install python3-pip -y -q
 sudo apt-get install libmysqlclient-dev -y -q
+sudo pip3 install --upgrade pip
 sudo pip3 install -q flask
 sudo pip3 install -q Jinja2
 sudo pip3 install -q mysqlclient
