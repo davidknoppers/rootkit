@@ -7,5 +7,6 @@ _date DATE,
 _time TIME,
 reading_type VARCHAR(50),
 reading_value INT,
-reading_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+reading_id INT NOT NULL AUTO_INCREMENT,
+PRIMARY KEY('reading_id'),
 ) DEFAULT CHARSET=utf8;
