@@ -14,7 +14,7 @@ sudo apt-get install python3-dev -y -q
 sudo apt-get install python3-pip -y -q
 sudo apt-get install libmysqlclient-dev -y -q
 sudo pip3 install -q flask
-sudo pip3 install -q Jinga2
+sudo pip3 install -q Jinja2
 sudo pip3 install -q mysqlclient
-sudo pip3 install -q SQLAlchmeny
+sudo pip3 install -q SQLAlchemy
 sudo pip3 install -q requests
