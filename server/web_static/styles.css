@@ -1,0 +1,74 @@
+body {
+    font: 24px Helvetica;
+    background: #FFFFFF;
+    border-radius: 2pt;
+
+}
+
+#main {
+    min-height: 400px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+    border: 1px solid #ffffff
+}
+
+#main > article {
+    margin: 4px;
+    padding: 5px;
+    background: #FFFFFF;
+    flex: 3 1 60%;
+    order: 2;
+}
+
+#main > nav {
+    margin: 4px;
+    padding: 5px;
+    background: #ffffff;
+    flex: 1 6 20%;
+    order: 1;
+}
+
+#main > aside {
+    margin: 4px;
+    padding: 5px;
+    background: #ffffff;
+    flex: 1 6 20%;
+    order: 3;
+}
+
+header, footer {
+    display: flex;
+    margin: 4px;
+    padding: 5px;
+    min-height: 60px;
+    border: 1px solid #ffffff;
+    border-radius: 2pt;
+    background: #1b822f;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+footer {
+    font-size: small;
+}
+
+/* Too narrow to support three columns */
+@media all and (max-width: 840px) {
+    #main, #page {
+	flex-direction: column;
+    }
+
+    #main > article, #main > nav, #main > aside {
+	/* Return them to document order */
+	order: 0;
+    }
+
+    #main > nav, #main > aside, header, footer {
+	min-height: 50px;
+	max-height: 50px;
+    }
+}
