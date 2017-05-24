@@ -31,21 +31,19 @@ void setup(){
 
 void loop(){
 	int sensor_value;
-	int temp_sum = 0, i = 0, accuracy_loop = 10;
+	int i = 0, accuracy_loop = 10;
 
 	// read 10 times with 5 second delay to average reading
+	// delimiter "~" for each individual reading
 	for (i = 0; i < accuracy_loop; i++)
 	{
-		temp_sum += analogRead(sensor_pin);
+		Serial.print(analogRead(sensor_pin));
+		Serial.print("~");
 		delay(5000);
 	}
-	sensor_value = temp_sum / accuracy_loop;
 
-	// actual value being written
-	Serial.print(sensor_value);
-
-	// this is our delimiter
-	Serial.print("");
+	// delimiter for end of reading series
+	Serial.print("\n");
 
 	delay(loop_delay);
 }
