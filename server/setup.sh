@@ -5,6 +5,8 @@ sudo apt-get update
 sudo apt-get install ufw -y -q
 ## editor
 sudo apt-get install emacs -y -q
+## git
+sudo apt-get install git -y -q
 ## webserver
 sudo apt-get install nginx -y -q
 ## mysql
