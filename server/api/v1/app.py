@@ -27,8 +27,11 @@ def plant_data():
     """
     try:
         r = request.get_json()
+        print("contents: {}, type: {}".format(r, type(r)))
     except:
-        return("401")
+        r = None
+    if r is None:
+        return "Not valid JSON", 400
     contents = []
     with open("/home/vagrant/plants_as_a_service/server/web_static/test.html", mode="r") as f:
         for line in f:
