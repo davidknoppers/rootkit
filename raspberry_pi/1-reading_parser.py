@@ -56,7 +56,8 @@ def post_request_to_server(payload):
     """makes post request to remote server with latest reading"""
     url = "http://52.90.202.94:5000/plant_data/update/"
     try:
-        r = requests.post(url, payload)
+        headers = {'Content-Type': 'application/json'}
+        r = requests.post(url, payload, headers=headers)
     except ConnectionError:
         print("Connection Error")
     print(r.status_code)
