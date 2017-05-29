@@ -1,5 +1,5 @@
-## Plants as a Service
-This is an open source project for an automated plant care system.
+# rootkit
+Not that kind of root kit ;) this is an open source project for an automated plant care system
 
 
 **Contributors:**
