@@ -52,11 +52,11 @@ def save_to_localDB(reading):
     # build query
     query += "INSERT INTO readings "
     query += "(`reading_dt`, `reading_date`, `reading_time`, `plant_id`, "
-    query += "`user_id`, `reading_type`, `plantgroup_id`) "
-    query += "VALUES ({}, {}, {}, {}, {}, {}, {}".format(
+    query += "`user_id`, `reading_type`, `plantgroup_id`, `reading_value`) "
+    query += "VALUES ({}, {}, {}, {}, {}, {}, {}, {}".format(
         str(reading["reading_dt"]), str(reading["reading_date"]),
         str(reading["reading_time"]), reading["plant_id"], reading["user_id"],
-        reading["plantgroup_id"], reading["reading_type"])
+        reading["plantgroup_id"], reading["reading_type"], reading["reading_value"])
     query += ");"
     print(query)
     #count = c.execute("INSERT INTO plant")
