@@ -10,8 +10,10 @@ We drop the high and low values and then average the remaining 8 readings
 import csv
 import datetime
 import json
+import MySQLdb
 import requests
 import statistics
+import sys
 
 def get_moisture_reading():
     """
@@ -34,32 +36,32 @@ def parse_to_dict(reading):
     payload['reading_time'] = reading[0][11:-7]
     payload['reading_dt'] = reading[0][:-7]
     payload['reading_value'] = reading[1]
-    payload['plant_id'] = 0
-    payload['user_id'] = 0
-    payload['plantgroup_id'] = 0
+    payload['plant_id'] = 1
+    payload['user_id'] = 1
+    payload['plantgroup_id'] = 1
     payload['reading_type'] = "soil_moisture"
     payload['reading_id'] = 0
     return payload
 
 def save_to_localDB(reading):
     """Takes tuple and writes value and timestamp to database"""
-    #db = MySQLdb.Connect(db=sys.argv[3],
-    #                     user=sys.argv[1],
-    #                     passwd=sys.argv[2],
-    #                     port=3306)
-    #c = db.cursor()
+    db = MySQLdb.Connect(db=sys.argv[3],
+                         user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         port=3306)
+    c = db.cursor()
     query = ""
     # build query
     query += "INSERT INTO readings "
     query += "(`reading_dt`, `reading_date`, `reading_time`, `plant_id`, "
     query += "`user_id`, `reading_type`, `plantgroup_id`, `reading_value`) "
-    query += "VALUES ({}, {}, {}, {}, {}, {}, {}, {}".format(
+    query += "VALUES ('{}', '{}', '{}', {}, {}, '{}', {}, {}".format(
         str(reading["reading_dt"]), str(reading["reading_date"]),
         str(reading["reading_time"]), reading["plant_id"], reading["user_id"],
-        reading["plantgroup_id"], reading["reading_type"], reading["reading_value"])
+        reading["reading_type"], reading["plantgroup_id"], reading["reading_value"])
     query += ");"
-    print(query)
-    #count = c.execute("INSERT INTO plant")
+    # print(query)
+    count = c.execute(query)
     # this is WIP
 
 def make_json_payload(reading):
