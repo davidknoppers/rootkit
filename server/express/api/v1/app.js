@@ -28,9 +28,9 @@ let db_writer = function(qry) {
     //configure a connection to the sql server, with authorizations passed as arguments when app.js is called
     let con = mysql.createConnection({
 	host: "localhost",
-	user: process.argv[1],
-	password: process.argv[2],
-	database: process.argv[3]
+	user: process.argv[2],
+	password: process.argv[3],
+	database: process.argv[4]
     });
     //open the connection
     con.connect(function(err){
@@ -58,4 +58,4 @@ app.post("/express/api/v1", function(request, response) {
 
 //we will need to change the port to listen on when this is run from the server
 app.listen(8000);
-console.log("server is listening")
+/*console.log("server is listening")*/
