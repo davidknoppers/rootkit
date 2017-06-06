@@ -56,6 +56,6 @@ app.post("/express/api/v1", function(request, response) {
     response.sendStatus(db_writer(qry));
 });
 
-
+//we will need to change the port to listen on when this is run from the server
 app.listen(8000);
 console.log("server is listening")
