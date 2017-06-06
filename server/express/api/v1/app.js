@@ -1,30 +1,31 @@
 #!/usr/bin/node
-
+/*
+This script listens for POST requests from our raspberry pi
+The POST requests will be readings from the moisture sensor
+It parses the POST request and converts its data into a mysql query
+It then opens a connection to the mysql database and writes in the sensor data via that query
+*/
 let express = require("express");
 let myParser = require("body-parser");
 let parseJson = require('parse-json');
+var mysql = require('mysql');
 let app = express();
 
 
 app.use(myParser.json());
+//we are expected JSON data in the POST request
 app.post("/express/api/v1", function(request, response) {
 let obj = request.body;
 response.send(obj);
-console.log(JSON.stringify(obj))
-console.log(typeof(JSON.stringify(obj)))
-let json_thing = JSON.parse(JSON.stringify(obj))
-console.log('json thing: ' + json_thing.reading_value)
-console.log('type of json thing: ' + typeof(json_thing.reading_value))
-});
-
-let qry = "INSERT INTO readings (`reading_dt`, `reading_date`, `reading_time`, `plant_id`, `user_id`, `reading_type`, `plantgroup_id`, `reading_value`) VALUES ('2017-06-05 13:39:43', '2017-06-05', '13:39:43', 1, 1, 'soil_moisture', 1, 760.625);"
-
-
+//data is the JSON data turned into a usable JS object
+let data = JSON.parse(JSON.stringify(obj))
+// qry is a string painstakingly constructed by multiple references to the JS object above
+let qry = `INSERT INTO readings (\`reading_dt\`, \`reading_date\`, \`reading_time\`, \`plant_id\`, \`user_id\`, \`reading_type\`, \`plantgroup_id\`, \`reading_value\`) VALUES ('${data.reading_dt}', '${data.reading_date}', '${data.reading_time}', ${data.plant_id}, ${data.user_id}, '${data.reading_type}', ${data.plantgroup_id}, ${data.reading_value});`
 let con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "poo",
-    database: "nodejs_test"
+    database: "forest"
 });
 con.connect(function(err){
   if(err){
@@ -42,5 +43,10 @@ con.query(qry, function (err, rows) {
 });
 con.end(function(err) {
 });
+
+
+});
+
+
 app.listen(8000);
 console.log("server is listening")
