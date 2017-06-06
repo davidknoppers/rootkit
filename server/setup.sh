@@ -11,6 +11,9 @@ sudo apt-get install git -y -q
 sudo apt-get install nginx -y -q
 ## mysql
 sudo apt-get install mysql=5.7 -y -q
+## nodejs
+sudo apt-get install nodejs
+sudo apt-get install npm
 ## python dependencies
 sudo apt-get install python3-dev -y -q
 sudo apt-get install python3-pip -y -q
