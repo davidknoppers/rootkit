@@ -60,8 +60,14 @@ def save_to_localDB(reading):
         str(reading["reading_time"]), reading["plant_id"], reading["user_id"],
         reading["reading_type"], reading["plantgroup_id"], reading["reading_value"])
     query += ");"
-    # print(query)
-    count = c.execute(query)
+    print(query)
+    try:
+        count = c.execute(query)
+        db.commit()
+    except:
+        db.rollback()
+    db.close()
+    # print(count)
     # this is WIP
 
 def make_json_payload(reading):
