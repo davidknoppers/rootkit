@@ -22,7 +22,7 @@ app.use(express.static('public'));
 app.use('/api', require('cors')());
 
 // the api route
-app.get('/:user_id/:plant_id/:plantgroup_id', function (req, res) {
+app.get('/:user_id/:plant_id/:plantgroup_id/:amount', function (req, res) {
   // creates the connection to mysql
   const con = mysql.createConnection({
     host     : 'localhost',
@@ -68,7 +68,7 @@ app.get('/:user_id/:plant_id/:plantgroup_id', function (req, res) {
 	getResp = "combination of user_id, plant_id, and plate_id does not exist";
 	statusCode = 400;
       } else if (rows.length > 0) {
-	getResp = rows.slice(0,10);
+	getResp = rows.slice(0,req.params.amount);
 	statusCode = 200;
       } else {
 	getResp = "something internal went wrong";
