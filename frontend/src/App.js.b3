@@ -1,0 +1,73 @@
+import React, { Component } from 'react';
+import "bootstrap/dist/css/bootstrap.css";
+import './App.css';
+import { Navbar, NavItem, Nav, Grid, Row, Col } from "react-bootstrap";
+// let request = require('request');
+
+const PLACES = [
+  {name: 'The Mission', zip: '94110'},
+  {name: 'FIDI', zip: '94111'},
+  {name: 'San Jose', zip: '94088'}
+];
+
+class WeatherDisplay extends Component {
+  constructor () {
+    super();
+    this.state = { weatherData: null };
+  }
+  componentDidMount () {
+    const zip = this.props.zip;
+    console.log(zip);
+    const URL = 'http://api.openweathermap.org/data/2.5/weather?q=' + zip + '&appid=b1b35bba8b434a28a0be2a3e1071ae5b&units=imperial';
+    fetch(URL).then(res => res.json()).then(json => {
+      this.setState({ weatherData: json });
+    });
+  }
+  render () {
+    const weatherData = this.state.weatherData;
+    if (!weatherData) return <div>Let me pull this up... One moment please</div>;
+    const weather = weatherData.weather[0];
+    const iconURL = 'http://openweathermap.org/img/w/' + weather.icon + '.png';
+    return (
+      <div>
+      <h1>
+        Current weather in {weatherData.name}
+        <img src={iconURL} alt={weatherData.description} />
+      </h1>
+      <h3> Temperature is {weatherData.main.temp}°</h3>
+      <p> Today: high {weatherData.main.temp_max}° / low {weatherData.main.temp_min}° </p>
+      <p> Wind: {weatherData.wind.speed} mph at {weatherData.wind.deg}° </p>
+      </div>
+    )
+  }
+}
+
+class App extends Component {
+  constructor () {
+    super();
+    this.state = { activePlace: 0 };
+  }
+  render () {
+    const activePlace = this.state.activePlace;
+    return (
+      <div className='App'>
+	        <WeatherDisplay zip={ PLACES[activePlace].zip }
+          key={activePlace}
+          />
+	{PLACES.map((place, indexOfArray) => (
+	    <button
+      key={indexOfArray}
+	    onClick={() => {
+	    this.setState({ activePlace: indexOfArray});
+	    console.log('Clicked: '+indexOfArray);
+	  }}>
+	    {place.name}
+	  </button>))
+  }
+      </div>
+
+    );
+  }
+}
+
+export default App;
