@@ -10,8 +10,8 @@ import sys
 #tweepy is our main bot engine
 import tweepy
 #get the keys for oauth
-from keys import *
-#set up oauth
+from keys import ckey, csecret, akey, asecret
+#set up oauth with consumer and access keys/secrets
 auth = tweepy.OAuthHandler(ckey,csecret)
 auth.set_access_token(akey, asecret)
 #launch basic api
@@ -28,8 +28,11 @@ def alert_user(reading, api=twitter_api):
     moisture_level = reading[4]
     plant_id = reading[5]
     user_id = reading[6]
-    message = "Alert {}! Your plant's moisture is getting low. Plant id: {} Reading date: {}".format(ids_and_handles[str(user_id)], plant_id, reading_date)
-    print(message)
+    message = "{} Alert! Your plant's moisture is getting low.\nPlant id: {}\nDate of reading: {}\nMoisture level: {}".format(
+        ids_and_handles[str(user_id)], plant_id, reading_date, moisture_level)
+    api.update_status(message)
+    return 1
+
 def check_db():
     #connect to the MySQL db using credentials passed from sys.argv
     db = MySQLdb.connect(host='localhost', user=sys.argv[1],
@@ -50,8 +53,7 @@ def check_db():
     #list of reading ids that have now been "read" by the bot
     for reading in cursor.fetchall():
         moisture_level = reading[4]
-        if moisture_level < 400:
-            print("moisture check triggered")
+        if moisture_level < 396:
             plant_id = reading[5]
             user_id = reading[6]
             alert_user(reading)
