@@ -3,11 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
     "bootstrap": "^3.3.7",
     "bootswatch": "^3.3.7",
-    "react": "^15.5.4",
+    "chart.js": "^2.6.0",
+    "react": "^15.6.1",
     "react-bootstrap": "^0.31.0",
-    "react-dom": "^15.5.4"
+    "react-chartjs": "^0.8.0",
+    "react-chartjs-2": "^2.1.0",
+    "react-dom": "^15.6.1",
+    "react-http-request": "^1.0.3"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"
