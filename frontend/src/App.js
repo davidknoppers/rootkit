@@ -7,7 +7,7 @@ import "bootswatch/sandstone/bootstrap.css";
 import './App.css';
 import { NavItem, Nav, Grid, Row, Col } from "react-bootstrap";
 // let request = require('request');
-
+var dataRendered = 0;
 const PLACES = [
   {name: 'Cilantro', zip: '94110'},
   {name: 'Thai basil', zip: '94110'},
@@ -21,18 +21,10 @@ datasets: [{
     data: [],
     backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
         'rgba(255, 159, 64, 0.2)'
     ],
     borderColor: [
         'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
         'rgba(255, 159, 64, 1)'
     ],
     borderWidth: 1
@@ -65,7 +57,10 @@ class WeatherDisplay extends Component {
     fetch(URL).then(res => res.json()).then(json => {
       this.setState({ weatherData: json });
     });
+    if (dataRendered == 0) {
       this.handleGet();
+      dataRendered = 1;
+    }
   }
   handleGet() {
     var request = new XMLHttpRequest();
@@ -78,7 +73,7 @@ class WeatherDisplay extends Component {
         var getResponse = JSON.parse(request.responseText)
         for(var i=getResponse.length-1; i >= 0; i--) {
           console.log("this is a test")
-          chartData.labels.push(getResponse[i]["reading_date"])
+          chartData.labels.push(getResponse[i]["reading_date"].substring(0,10))
           chartData.datasets[0].data.push(getResponse[i]["reading_value"])
         }
 
@@ -86,7 +81,7 @@ class WeatherDisplay extends Component {
         console.warn('error')
       }
     };
-    request.open('GET', 'http://52.90.202.94:7000/1/1/1/10')
+    request.open('GET', 'http://52.90.202.94:7000/1/1/1/50')
     request.send();
   };
 
