@@ -42,3 +42,15 @@ in Node and Express, processes the data and enters it into our MySQL database. Y
 for your plant on our website, which is built with HTML/CSS and React. You can also sign up for notifications
 about your plant via our Twitter bot, which is built with Python 3 and Tweepy, and holds a small amount
 of persistent data on our server in JSON format.
+
+### Moving Forward
+
+Scalability Improvements: current parts of our stack are hardcoded (like JSON file that tracks the twitter
+handles of our users). We are also using node.js as our web server, which obviously needs to change.
+
+Plug and Play: We have a mostly complete list of the dependencies and requirements for our stack; better still
+would be a script that automates setup and deployment of our service. Much of this automation has been written,
+but not all of it.
+
+Hire a Frontend Developer: Our website has some strong points, but it's not fully functional as we'd like it to be,
+and a few parts are downright broken. It's time to bring in some frontend expertise, or develop it ourselves!
