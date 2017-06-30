@@ -1,6 +1,6 @@
 # rootkit
 Not that kind of root kit ;) this is an open source project for an automated plant care system
-
+Final project for year one of [Holberton School](https://www.holbertonschool.com/).
 
 **Contributors:**
 
@@ -16,17 +16,12 @@ Timothy Britton, @wintermanc3r
 
 Whether you are a commercial farmer or someone who is prone to forgetting to water your favorite house plant from time to time, this system removes the guesswork from environmental factors and can automate most regular tasks related to plant care.
 
-Plants are generally pretty awesome whether for eating, oxygen production, or decoration so anything we can do to enable more plants in our not-so-plant-friendly human habitats makes the world marginally better.
-
+Our system is in working alpha and
 ### How do I use this?
 
-##### Step 1: Buy the open source hardware used for this project
+You sign up through one of the creators, and we send you the hardware. Each of your sensors corresponds to a unique plant id in our database.
+We start tracking data on your plant as soon as you activate the sensor. You have the option of receiving updates on your plant via Twitter.
 
-Instructions to come
+### How does it work?
 
-
-##### Step 2: Install the required software
-
-And more instructions to come
-
-
+![rootkit diagram](http://i.imgur.com/9Bw6niU.png)
