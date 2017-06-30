@@ -42,9 +42,11 @@ var chartOption =
 };
 
 class WeatherDisplay extends Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
     this.state = { weatherData: null };
+    console.log("prior console log")
+    console.log(this.props)
     this.handleGet = this.handleGet.bind(this);
   }
   componentDidMount () {
@@ -65,7 +67,7 @@ class WeatherDisplay extends Component {
   handleGet() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = (e) => {
-      if (request.readyState !==4) {
+      if (request.readyState !== 4) {
         return;
       }
       if (request.status === 200) {

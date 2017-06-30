@@ -15,7 +15,8 @@
     "react-http-request": "^1.0.3"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.0.7",
+    "webpack-dev-server": "^2.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
